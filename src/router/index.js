@@ -6,6 +6,7 @@ import User from '@/views/Interface/User'
 import Item from '@/views/Service/Item'
 import DaoChu from '@/views/Service/DaoChu'
 import DaoRu from '@/views/Service/DaoRu'
+import Data from '@/views/Service/Data'
 import Player from '@/views/Service/Player'
 import Config from '@/views/Interface/Config'
 import Intro from '@/views/Intro/Intro'
@@ -83,6 +84,14 @@ const router = new Router({
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 7
+          }
+        },{ 
+          path: '/service/data', 
+          name: 'data', 
+          component: Data,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 8
           }
         }
       ]

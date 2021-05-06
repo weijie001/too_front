@@ -23,14 +23,17 @@
     <el-menu-item index="1" @click="handleRoute('service/item')">
          <span>背包</span>
     </el-menu-item>
-     <el-menu-item index="2" @click="handleRoute('service/player')">
+    <el-menu-item index="2" @click="handleRoute('service/player')">
          <span>球员</span>
     </el-menu-item>
-      <el-menu-item index="3" @click="handleRoute('content/daochu')">
+    <el-menu-item index="3" @click="handleRoute('content/daochu')">
         <span>表导出</span>
     </el-menu-item>
-      <el-menu-item index="4" @click="handleRoute('content/daoru')">
+    <el-menu-item index="4" @click="handleRoute('content/daoru')">
         <span>表导入</span>
+    </el-menu-item>
+    <el-menu-item index="5" @click="handleRoute('service/data')">
+        <span>表数据</span>
     </el-menu-item>
   </el-submenu>
   
