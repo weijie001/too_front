@@ -8,7 +8,9 @@ import api from './http'
 import store from './store'
 import global from '@/utils/global'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/views/ef/index.css'
 import VueClipboard from 'vue-clipboard2'
+
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

@@ -126,9 +126,8 @@
           if (valid) {
             var account = sessionStorage.getItem("account");
             debugger
-            var token = sessionStorage.getItem("token");
             var env = sessionStorage.getItem("env");
-            if(account&&token&&env){
+            if(account&&env){
               var jsonObj =JSON.parse(this.ruleForm.param)
               var str = JSON.stringify(jsonObj)
               var param = { 
@@ -137,7 +136,6 @@
               "uri":this.ruleForm.uri,
               "data":str,
               "account":account,
-              "token":token,
               "env":env
               }
               debugger
@@ -152,7 +150,7 @@
                   cancelButtonText: '取消',
                   type: 'warning'
                   }).then(() => {
-                    this.$router.push("/interface/user")
+                    this.$router.push("/interface/user2")
                   }).catch(() => {
                         
                   });
@@ -167,6 +165,7 @@
         myData.param ='{}'
         myData.items = [];
         myData.uri = '';
+        debugger
         for(var i=0;i<myData.allItem.length;i++){
           if(myData.allItem[i].pb == pb){
             myData.items.push({value:myData.allItem[i].value,label:myData.allItem[i].value,res:myData.allItem[i].res,req:myData.allItem[i].req,pb:myData.allItem[i].pb})

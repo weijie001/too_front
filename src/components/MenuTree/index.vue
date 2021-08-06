@@ -11,7 +11,7 @@
      <el-menu-item index="2" @click="handleRoute('interface/config')">
          <span>接口配置</span>
      </el-menu-item>
-     <el-menu-item index="3" @click="handleRoute('interface/user')">
+     <el-menu-item index="3" @click="handleRoute('interface/user2')">
          <span>账号配置</span>
      </el-menu-item>
   </el-submenu>
@@ -34,6 +34,9 @@
     </el-menu-item>
     <el-menu-item index="5" @click="handleRoute('service/data')">
         <span>表数据</span>
+    </el-menu-item>
+    <el-menu-item index="6" @click="handleRoute('service/test')">
+        <span>bpm</span>
     </el-menu-item>
   </el-submenu>
   

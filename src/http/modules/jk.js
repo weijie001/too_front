@@ -12,7 +12,7 @@ export const selectUrl = (params) => {
 export const getInputParam = (params) => {
     return axios({
         url: '/jk/getInputParam',
-        method: 'get',
+        method: 'post',
         params
     })
 }
@@ -36,6 +36,14 @@ export const getData = (params) => {
 export const loginValid = (params) => {
     return axios({
         url: '/jk/loginValid',
+        method: 'get',
+        params
+    })
+}
+
+export const loginValid2 = (params) => {
+    return axios({
+        url: '/jk/loginValid2',
         method: 'get',
         params
     })

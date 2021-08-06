@@ -46,7 +46,7 @@
                                         <el-button
                                         size="mini"
                                         type="primary"
-                                        @click="handleExecute(scope.$index, scope.row,item.tableName,index)">执行</el-button>
+                                        @click="handleExecute(scope.$index, scope.row,item.tableName,index)">update</el-button>
                                     </template>
                                     </el-table-column>
                             </el-table>
@@ -173,7 +173,9 @@ export default {
         // 状态列字体颜色
         if (row.test[columnIndex] ==1) {
             return 'background: #FFB5B5'
-        } 
+        } else if(row.test[columnIndex] ==2){
+            return 'background: #CECECE'
+        }
         },
         addClass({row,column,rowIndex,columnIndex}){
             if (row.index[columnIndex] ==1) {

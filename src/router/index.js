@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
 import Test from '@/views/Interface/Test'
-import User from '@/views/Interface/User'
+import User2 from '@/views/Interface/User2'
 import Item from '@/views/Service/Item'
 import DaoChu from '@/views/Service/DaoChu'
 import DaoRu from '@/views/Service/DaoRu'
 import Data from '@/views/Service/Data'
 import Player from '@/views/Service/Player'
 import Config from '@/views/Interface/Config'
+import Panel from '@/views/ef/panel.vue'
 import Intro from '@/views/Intro/Intro'
 Vue.use(Router)
 
@@ -46,9 +47,9 @@ const router = new Router({
             index: 2
           }
         },{ 
-          path: '/interface/user', 
-          name: 'user', 
-          component: User,
+          path: '/interface/user2', 
+          name: 'user2', 
+          component: User2,
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 3
@@ -92,6 +93,14 @@ const router = new Router({
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 8
+          }
+        },{ 
+          path: '/service/test', 
+          name: 'panel', 
+          component: Panel,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 9
           }
         }
       ]

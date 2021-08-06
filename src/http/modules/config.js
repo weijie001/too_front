@@ -15,6 +15,14 @@ export const addAccount = (params) => {
     })
 }
 
+export const addAccount2 = (params) => {
+    return axios({
+        url: '/config/addAccount2',
+        method: 'get',
+        params
+    })
+}
+
 export const deleteAccount = (params) => {
     return axios({
         url: '/config/deleteAccount',
