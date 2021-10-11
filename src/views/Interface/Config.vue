@@ -19,8 +19,8 @@
     <div slot="tip" class="el-upload__tip">只能上传jar文件，且不超过500kb</div>
     </el-upload>
   </div>
-  <hr>
-  <div>
+  <!--<hr>
+   <div>
     <el-upload
     class="upload-demo"
     :action="url2"
@@ -34,8 +34,8 @@
     <el-button size="small" type="primary">点击上传</el-button>
     <div slot="tip" class="el-upload__tip">只能上传proto文件，且不超过500kb</div>
     </el-upload>
-  </div>
-  <hr>
+  </div> 
+  <hr>-->
 </div>
 </template>
 
@@ -53,8 +53,8 @@ export default {
     return myData
   },
   mounted:function(){
+    this.$store.commit('updateEnvShow', false)
     this.fileList = [];
-   
     this.$api.jk.getConfigFile().then(res => {
       for(var i=0;i<res.length;i++){
         if(res[i].type == 1){

@@ -97,6 +97,9 @@
 </template>
 <script>
 export default {
+  mounted:function(){
+       this.$store.commit('updateEnvShow', true)
+  },
   methods: {
     querySearch(queryString, cb) {
           var csvS = this.csvS;

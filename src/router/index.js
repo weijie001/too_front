@@ -7,6 +7,9 @@ import Item from '@/views/Service/Item'
 import DaoChu from '@/views/Service/DaoChu'
 import DaoRu from '@/views/Service/DaoRu'
 import Data from '@/views/Service/Data'
+import PvpLog from '@/views/Service/PvpLog'
+import TeamInfo from '@/views/Service/TeamInfo'
+import ServerManage from '@/views/Service/ServerManage'
 import Player from '@/views/Service/Player'
 import Config from '@/views/Interface/Config'
 import Panel from '@/views/ef/panel.vue'
@@ -101,6 +104,30 @@ const router = new Router({
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 9
+          }
+        },{ 
+          path: '/service/team', 
+          name: 'teamInfo', 
+          component: TeamInfo,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 10
+          }
+        },{ 
+          path: '/service/log', 
+          name: 'panel', 
+          component: PvpLog,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 11
+          }
+        },{ 
+          path: '/service/server', 
+          name: 'serverManage', 
+          component: ServerManage,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 12
           }
         }
       ]

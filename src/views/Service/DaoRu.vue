@@ -99,6 +99,7 @@ export default {
     }
   },
   mounted:function(){
+       this.$store.commit('updateEnvShow', true)
   },
   created(){
       this.initWebSocket()

@@ -87,6 +87,7 @@
         }
     },
     mounted:function(){
+      this.$store.commit('updateEnvShow', false)
       myData.account = sessionStorage.getItem("account");
 	    myData.env = sessionStorage.getItem("env")
       this.teamId =this.$store.state.tab.teamId
@@ -129,6 +130,7 @@
               env:myData.env
             }
         this.$api.jk.loginValid2(param).then(res => {
+          debugger
           if(!res.ret){
             this.teamId = res.team_id
           }else{

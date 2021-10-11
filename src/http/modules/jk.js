@@ -71,3 +71,83 @@ export const getTeamInfo = (params) => {
         params
     })
 }
+
+export const getLogDir = (params) => {
+    return axios({
+        url: '/jk/getLogDir',
+        method: 'get',
+        params
+    })
+}
+
+export const getLogFile = (params) => {
+    return axios({
+        url: '/jk/getLogFile',
+        method: 'get',
+        params
+    })
+}
+
+export const getEnv = (params) => {
+    return axios({
+        url: '/mainC/getEnv',
+        method: 'get',
+        params
+    })
+}
+
+export const changeEnv = (params) => {
+    return axios({
+        url: '/mainC/changeEnv',
+        method: 'get',
+        params
+    })
+}
+
+export const getDate = (params) => {
+    return axios({
+        url: '/jk/getDate',
+        method: 'get',
+        params
+    })
+}
+
+export const setDate = (params) => {
+    return axios({
+        url: '/jk/setDate',
+        method: 'get',
+        params
+    })
+}
+
+export const startServer = (params) => {
+    return axios({
+        url: '/jk/startServer',
+        method: 'get',
+        params
+    })
+}
+
+export const stopServer = (params) => {
+    return axios({
+        url: '/jk/stopServer',
+        method: 'get',
+        params
+    })
+}
+
+export const queryTeamInfo = (params) => {
+    return axios({
+        url: '/jk/queryTeamInfo',
+        method: 'get',
+        params
+    })
+}
+
+export const updateTeamInfo = (params) => {
+    return axios({
+        url: '/jk/updateTeamInfo',
+        method: 'get',
+        params
+    })
+}

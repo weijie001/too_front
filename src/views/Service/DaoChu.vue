@@ -43,6 +43,9 @@ import { baseUrl } from '@/utils/global'
       }
      
     },
+    mounted:function(){
+       this.$store.commit('updateEnvShow', true)
+    },
     methods: {
         handleCheckAllChange(val) {
             this.ruleForm.checkedCities = val ? this.ruleForm.cities : [];

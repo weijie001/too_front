@@ -84,8 +84,10 @@
         }
       };
     },
+
     mounted:function(){
         this.teamId =this.$store.state.tab.teamId
+        this.$store.commit('updateEnvShow', false)
         this.$api.jk.selectUrl().then(res => {
           var length = res.length;
           const set = new Set();
@@ -108,7 +110,7 @@
       },
       getTeamInfo(){
         if(this.teamId == "请选择账号"){
-          this.$router.push("/interface/user")
+          this.$router.push("/interface/user2")
         }else{
             this.dialogVisible = true
             var param = {

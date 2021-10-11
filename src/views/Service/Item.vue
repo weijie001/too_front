@@ -39,7 +39,7 @@
     <el-button @click="toggleSelection()">取消选择</el-button>
   </div>
   <div>
-	<el-input-number v-model="num"  :min="1" :max="100" label="描述文字"></el-input-number>
+	<el-input-number v-model="num"  :min="1" :max="1000000" label="描述文字"></el-input-number>
     <el-button type="primary" @click="add">add</el-button>
 </div>
   </div>
@@ -65,7 +65,9 @@
       }
      
     },
-
+    mounted:function(){
+       this.$store.commit('updateEnvShow', true)
+    },
     methods: {
         add(){
             if(this.multipleSelection.length == 0){

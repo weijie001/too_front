@@ -10,13 +10,19 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@grapecity/spread-excelio": "^11.2.3",
+    "@grapecity/spread-sheets": "^11.2.3",
+    "@grapecity/spread-sheets-print": "^11.2.3",
+    "@grapecity/spread-sheets-resources-zh": "^11.2.3",
+    "@grapecity/spread-sheets-vue": "^11.2.3",
     "element-ui": "^2.15.1",
+    "file-saver": "^2.0.5",
+    "lodash": "4.17.15",
     "node-sass": "^4.14.1",
     "vue": "^2.5.2",
     "vue-clipboard2": "^0.3.1",
-    "vue-router": "^3.0.1",
-    "lodash": "4.17.15",
     "vue-codemirror": "^4.0.6",
+    "vue-router": "^3.0.1",
     "vuedraggable": "2.23.0",
     "vuex": "^3.6.2"
   },

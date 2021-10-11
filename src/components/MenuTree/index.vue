@@ -35,11 +35,22 @@
     <el-menu-item index="5" @click="handleRoute('service/data')">
         <span>表数据</span>
     </el-menu-item>
-    <el-menu-item index="6" @click="handleRoute('service/test')">
-        <span>bpm</span>
+    <el-menu-item index="6" @click="handleRoute('service/team')">
+        <span>球队</span>
+    </el-menu-item>
+    <el-menu-item index="7" @click="handleRoute('service/log')">
+        <span>Log</span>
     </el-menu-item>
   </el-submenu>
-  
+  <el-submenu index="3">
+    <template slot="title">
+      <i class="el-icon-menu"></i>
+      <span>其它</span>
+    </template>
+    <el-menu-item index="1" @click="handleRoute('service/server')">
+         <span>服务管理</span>
+    </el-menu-item>
+  </el-submenu>
 </el-menu>
 </template>
 

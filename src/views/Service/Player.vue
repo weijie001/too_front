@@ -80,6 +80,9 @@
         },
       }
     },
+    mounted:function(){
+       this.$store.commit('updateEnvShow', true)
+    },
     methods: {
         query(formName){
             this.getData("1",this.size)
