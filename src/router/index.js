@@ -10,6 +10,7 @@ import Data from '@/views/Service/Data'
 import PvpLog from '@/views/Service/PvpLog'
 import TeamInfo from '@/views/Service/TeamInfo'
 import ServerManage from '@/views/Service/ServerManage'
+import RefreshConfig from '@/views/Service/RefreshConfig'
 import Player from '@/views/Service/Player'
 import Config from '@/views/Interface/Config'
 import Panel from '@/views/ef/panel.vue'
@@ -128,6 +129,14 @@ const router = new Router({
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 12
+          }
+        },{ 
+          path: '/service/refresh', 
+          name: 'RefreshConfig', 
+          component: RefreshConfig,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 13
           }
         }
       ]

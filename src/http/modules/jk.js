@@ -151,3 +151,11 @@ export const updateTeamInfo = (params) => {
         params
     })
 }
+
+export const refreshConfig = (params) => {
+    return axios({
+        url: '/jk/refreshConfig',
+        method: 'get',
+        params
+    })
+}

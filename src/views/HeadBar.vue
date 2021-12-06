@@ -44,9 +44,9 @@
     },
    methods: {
       select(val) {
-        var param = {
+          var param = {
                 tag:val,
-            }
+          }
           this.$api.jk.changeEnv(param).then(res => {
             this.value = val;
         })

@@ -38,8 +38,8 @@
     <el-menu-item index="6" @click="handleRoute('service/team')">
         <span>球队</span>
     </el-menu-item>
-    <el-menu-item index="7" @click="handleRoute('service/log')">
-        <span>Log</span>
+    <el-menu-item index="6" @click="handleRoute('service/refresh')">
+        <span>刷新配置</span>
     </el-menu-item>
   </el-submenu>
   <el-submenu index="3">
@@ -49,6 +49,9 @@
     </template>
     <el-menu-item index="1" @click="handleRoute('service/server')">
          <span>服务管理</span>
+    </el-menu-item>
+    <el-menu-item index="2" @click="handleRoute('service/log')">
+        <span>Log</span>
     </el-menu-item>
   </el-submenu>
 </el-menu>

@@ -25,6 +25,9 @@
         <el-input type="text" v-model="ruleForm.res" :disabled="true" style="width:250px"></el-input>
       </el-form-item>
       <el-form-item>
+        <template>
+          <el-input-number v-model="num"  :min="1" :max="1000000" label="描述文字"></el-input-number>
+        </template>
         <el-button type="primary" @click="submitForm('ruleForm')">SEND</el-button>
       </el-form-item>
         <hr>
@@ -63,6 +66,7 @@
           param: '{}',
           result:''
           
+          
 }
   export default {
     data() {
@@ -73,6 +77,7 @@
           tableId:'',
         },
         teamId:'',
+        num: 1,
         dialogVisible: false,
         rules: {
           pb: [
@@ -123,12 +128,22 @@
         }
         
       },
+      httpRequest(param){
+        this.$api.jk.getData(param).then(res => {
+                  var jsonStr = JSON.stringify(res, null, 4)
+                  myData.result = jsonStr
+                  if(this.num > 1){
+                      this.num = this.num -1
+                      this.httpRequest(param)
+                  }
+              })
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             var account = sessionStorage.getItem("account");
-            debugger
             var env = sessionStorage.getItem("env");
+            var serverId = sessionStorage.getItem("serverId");
             if(account&&env){
               var jsonObj =JSON.parse(this.ruleForm.param)
               var str = JSON.stringify(jsonObj)
@@ -138,14 +153,10 @@
               "uri":this.ruleForm.uri,
               "data":str,
               "account":account,
-              "env":env
+              "env":env,
+              "serverId":serverId,
               }
-              debugger
-              this.$api.jk.getData(param).then(res => {
-                debugger
-                  var jsonStr = JSON.stringify(res, null, 4)
-                  myData.result = jsonStr
-              })
+              this.httpRequest(param);
             }else{
                 this.$confirm('请设置账号', '提示', {
                   confirmButtonText: '确定',

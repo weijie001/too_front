@@ -23,9 +23,16 @@
         prop="env"
         label="env">
       </el-table-column>
+      <el-table-column
+        prop="serverId"
+        label="serverId">
+      </el-table-column>
+      <el-table-column
+        prop="name"
+        label="name">
+      </el-table-column>
        <el-table-column label="操作">
       <template slot-scope="scope">
-    
         <el-button
           size="mini"
           type="danger"
@@ -39,43 +46,47 @@
     <el-button type="primary" @click="dialogVisible = true">新增</el-button>
   </div>
     <el-dialog
-    title="提示"
-    :visible.sync="dialogVisible"
-    width="30%"
-    :before-close="handleClose">
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position= "left" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="ACCOUNT" prop="account">
-        <el-input type="text" v-model="ruleForm.account"  style="width:250px"></el-input>
-      </el-form-item>
-      <el-form-item label="ENV" prop="env">
-        <el-input type="text" v-model="ruleForm.env"  style="width:250px"></el-input>
-      </el-form-item>
-    </el-form>
-    <span slot="footer" class="dialog-footer">
-      <el-button @click="dialogVisible = false">取 消</el-button>
-      <el-button type="primary" @click="add('ruleForm')">确 定</el-button>
-    </span>
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position= "left" label-width="100px" class="demo-ruleForm">
+          <el-form-item label="ACCOUNT" prop="account">
+            <el-input type="text" v-model="ruleForm.account"  style="width:250px"></el-input>
+          </el-form-item>
+          <el-form-item label="SERVER" prop="server">
+            <el-select v-model="ruleForm.serverId" placeholder="请选择" @change="select">
+              <el-option v-for="item in servers" :key="item" :label="item.name" :value="item"/>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="ENV" prop="env">
+            <el-input type="text" v-model="ruleForm.env"  style="width:250px"></el-input>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="addConfirm('ruleForm')">确 定</el-button>
+        </span>
   </el-dialog>
 </div>
 </template>
 <script>
- var myData = {
-          account:'',
-	      env: ''
-}
   export default {
     data() {
       return {
         dialogVisible: false,
-        ruleForm: myData,
+        ruleForm: {
+          account:'',
+          env: '',
+          serverId:'',
+          name:'',
+        },
         tableData:[],
+        servers:[],
         currentRow: null,
         rules: {
           account: [
             { required: true, message: '请输入accout', trigger: 'change' }
-          ],
-          env: [
-            { required: true, message: '请输入IP+PORT', trigger: 'change' }
           ]
         }
       };
@@ -88,27 +99,32 @@
     },
     mounted:function(){
       this.$store.commit('updateEnvShow', false)
-      myData.account = sessionStorage.getItem("account");
-	    myData.env = sessionStorage.getItem("env")
+      this.ruleForm.account = sessionStorage.getItem("account");
       this.teamId =this.$store.state.tab.teamId
       this.tableData=[];
       this.$api.config.getAccount().then(res => {
-        for(var i=0;i<res.length;i++){
-          debugger
-          this.tableData.push({id:res[i].id,account:res[i].account,env:res[i].env})
+        debugger
+        for(var i=0;i<res.testAccounts.length;i++){
+          this.tableData.push({id:res.testAccounts[i].id,account:res.testAccounts[i].account,env:res.testAccounts[i].env,serverId:res.testAccounts[i].serverId,name:res.testAccounts[i].name})
+        }
+        for(var i=0;i<res.chooseServerInfos.length;i++){
+          this.servers.push({name:res.chooseServerInfos[i].name,serverId:res.chooseServerInfos[i].serverId,addr:res.chooseServerInfos[i].addr,port:res.chooseServerInfos[i].port})
         }
       })
     },
     methods: {
+      select(val) {
+        debugger
+         this.ruleForm.env = val.addr+":"+val.port;
+         this.ruleForm.serverId = val.serverId;
+         this.ruleForm.name = val.name;
+      },
       handleClose(done) {
         this.$confirm('确认关闭？')
           .then(_ => {
             done();
           })
           .catch(_ => {});
-      },
-      handleEdit(index, row){
-
       },
       handleDelete(index, row) {
         var param ={
@@ -120,14 +136,18 @@
         });
       },
       handleCurrentChange(val) {
+        debugger
         this.currentRow = val;
-        myData.account = val.account;
-	      myData.env = val.env;
-        sessionStorage.setItem("account",myData.account);
-		    sessionStorage.setItem("env",myData.env);
+        this.ruleForm.account = val.account;
+        this.ruleForm.env = val.env;
+        this.ruleForm.serverId = val.serverId;
+        sessionStorage.setItem("account",this.ruleForm.account);
+		    sessionStorage.setItem("env",this.ruleForm.env);
+        sessionStorage.setItem("serverId",this.ruleForm.serverId);
         var param ={
-              account:myData.account,
-              env:myData.env
+              account:val.account,
+              env:val.env,
+              serverId:val.serverId
             }
         this.$api.jk.loginValid2(param).then(res => {
           debugger
@@ -141,17 +161,19 @@
         });
         
       },
-      add(formName) {
+      addConfirm(formName) {
         this.dialogVisible = false
         this.$refs[formName].validate((valid) => {
           if (valid) {
             var param ={
-              account:myData.account,
-              env:myData.env
+              account:this.ruleForm.account,
+              env:this.ruleForm.env,
+              serverId:this.ruleForm.serverId,
+              name:this.ruleForm.name
             }
             this.$api.config.addAccount2(param).then(res => {
                 if(res){
-                  this.tableData.push({id:res,account:myData.account,env:myData.env})
+                  this.tableData.push({id:res,account:this.ruleForm.account,env:this.ruleForm.env,serverId:this.ruleForm.serverId,name:this.ruleForm.name})
                 }
             })
           } else {
