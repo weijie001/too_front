@@ -159,3 +159,35 @@ export const refreshConfig = (params) => {
         params
     })
 }
+
+export const compare = (params) => {
+    return axios({
+        url: '/dbC/compare',
+        method: 'get',
+        params
+    })
+}
+
+export const compare2 = (params) => {
+    return axios({
+        url: '/dbC/compare2',
+        method: 'get',
+        params
+    })
+}
+
+export const execSql = (params) => {
+    return axios({
+        url: '/dbC/execSql',
+        method: 'get',
+        params
+    })
+}
+
+export const tableSql = (params) => {
+    return axios({
+        url: '/dbC/tableSql',
+        method: 'get',
+        params
+    })
+}

@@ -11,6 +11,7 @@ import PvpLog from '@/views/Service/PvpLog'
 import TeamInfo from '@/views/Service/TeamInfo'
 import ServerManage from '@/views/Service/ServerManage'
 import RefreshConfig from '@/views/Service/RefreshConfig'
+import DbCompare from '@/views/Service/DbCompare'
 import Player from '@/views/Service/Player'
 import Config from '@/views/Interface/Config'
 import Panel from '@/views/ef/panel.vue'
@@ -132,11 +133,19 @@ const router = new Router({
           }
         },{ 
           path: '/service/refresh', 
-          name: 'RefreshConfig', 
+          name: 'refreshConfig', 
           component: RefreshConfig,
           meta: {
             icon: 'fa fa-home fa-lg',
             index: 13
+          }
+        },{ 
+          path: '/service/compare', 
+          name: 'dbCompare', 
+          component: DbCompare,
+          meta: {
+            icon: 'fa fa-home fa-lg',
+            index: 14
           }
         }
       ]

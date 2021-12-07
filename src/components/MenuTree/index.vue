@@ -38,8 +38,11 @@
     <el-menu-item index="6" @click="handleRoute('service/team')">
         <span>球队</span>
     </el-menu-item>
-    <el-menu-item index="6" @click="handleRoute('service/refresh')">
+    <el-menu-item index="7" @click="handleRoute('service/refresh')">
         <span>刷新配置</span>
+    </el-menu-item>
+    <el-menu-item index="8" @click="handleRoute('service/compare')">
+        <span>Compare</span>
     </el-menu-item>
   </el-submenu>
   <el-submenu index="3">
